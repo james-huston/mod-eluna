@@ -40,6 +40,7 @@ extern "C"
 #include "AchievementMethods.h"
 #include "ItemTemplateMethods.h"
 #include "RollMethods.h"
+#include "AuctionHouseMethods.h"
 
 luaL_Reg GlobalMethods[] =
 {
@@ -158,6 +159,17 @@ luaL_Reg GlobalMethods[] =
     { "SetOwnerHalaa", &LuaGlobalFunctions::SetOwnerHalaa },
 
     { NULL, NULL }
+};
+
+ElunaRegister<AuctionHouseEntry> AuctionMethods[] =
+{
+    { NULL, NULL }
+};
+
+ElunaRegister<AuctionHouseMgr> AuctionHouseMgrMethods[] =
+{
+    { "AddItem", &LuaAuctionHouse::AddItem },
+    { "GetAuctonCount", &LuaAuctionHouse::GetAuctionCount }
 };
 
 ElunaRegister<Object> ObjectMethods[] =
@@ -1313,11 +1325,6 @@ ElunaRegister<Corpse> CorpseMethods[] =
     { "ResetGhostTime", &LuaCorpse::ResetGhostTime },
     { "SaveToDB", &LuaCorpse::SaveToDB },
 
-    { NULL, NULL }
-};
-
-ElunaRegister<AuctionHouseEntry> AuctionMethods[] =
-{
     { NULL, NULL }
 };
 
