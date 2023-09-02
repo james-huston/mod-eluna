@@ -11,8 +11,8 @@ namespace LuaAuctionHouse
 {
     int GetAuctionCount(lua_State* L,  AuctionHouseMgr* ahman)
     {
-//        int auctionHouseId = Eluna::CHECKTYPE<INT>(L, 2);
-        Eluna::Push(L, 0);
+        int auctionHouseId = Eluna::CHECKVAL<int>(L, 2);
+        Eluna::Push(L, auctionHouseId);
         return 0;
     }
 
