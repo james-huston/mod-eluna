@@ -40,6 +40,9 @@ extern "C"
 #include "AchievementMethods.h"
 #include "ItemTemplateMethods.h"
 #include "RollMethods.h"
+#include "ElunaAuctionHouse.h"
+#include "AuctionMethods.h"
+
 
 luaL_Reg GlobalMethods[] =
 {
@@ -1321,6 +1324,12 @@ ElunaRegister<AuctionHouseEntry> AuctionMethods[] =
     { NULL, NULL }
 };
 
+ElunaRegister<ElunaAuctionHouse> ElunaAuctionHouseMethods[] =
+{
+    { "GetAuctionCount", &LuaAuction::GetAuctionCount }
+};
+
+
 ElunaRegister<BattleGround> BattleGroundMethods[] =
 {
     // Getters
@@ -1545,6 +1554,9 @@ void RegisterFunctions(Eluna* E)
 
     ElunaTemplate<Roll>::Register(E, "Roll");
     ElunaTemplate<Roll>::SetMethods(E, RollMethods);
+
+    ElunaTemplate<ElunaAuctionHouse>::Register(E, "ElunaAuctionHouse");
+    ElunaTemplate<ElunaAuctionHouse>::SetMethods(E, ElunaAuctionHouseMethods);
 
     ElunaTemplate<long long>::Register(E, "long long", true);
 
